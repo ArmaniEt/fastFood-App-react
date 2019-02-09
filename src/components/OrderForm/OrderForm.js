@@ -12,7 +12,6 @@ function OrderForm(props) {
                                                             foodQuantity = {() => props.countQuantity(item.name)}
                                                             key={item.name}
                                                             onChangeFood={(event) => props.onChangeFood(item.name, event)}
-                                                            isDisabled = {() => props.isDisabled(item.name)}
                                                             price = {item.price}
 
                 />)}

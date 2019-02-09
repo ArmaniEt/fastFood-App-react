@@ -34,7 +34,6 @@ class App extends Component {
                                 countTotal={this.getTotal}
                                 countQuantity={this.getQuantity}
                                 onChangeFood={this.foodChanger}
-                                isDisabled = {this.isDisabledButton}
                             />
                         </Col>
                         <Col xs={7}>
@@ -119,9 +118,7 @@ class App extends Component {
         return totalCount <= 0;
     };
 
-    isDisabledButton = (name) => {
-      return this.state.foods[name].count === 0;
-    };
+
 }
 
 

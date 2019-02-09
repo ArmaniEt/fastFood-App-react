@@ -11,7 +11,7 @@ function CheckText(props) {
                         <span className='m-0'>{props.foodName} x{props.foodQuantity()}: {props.price * props.foodQuantity()}</span>
                     </span>
                     <span>
-                        <button className="btn btn-danger float-right" disabled={props.isDisabled()}
+                        <button className="btn btn-danger float-right"
                                 onClick={(event) => props.onChangeFood(event)}><i className="fas fa-trash-alt"> </i>
                         </button>
                     </span>
