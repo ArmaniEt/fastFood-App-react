@@ -5,8 +5,8 @@ import Food from "../Food/Food"
 
 function Menu(props) {
     return (
-        <Col className="border border-dark m-2">
-            <h5>Add items: </h5>
+        <Col className="border border-dark m-2 rounded">
+            <h5 className="mt-1">Add items: </h5>
             <Row>
                 {AVAILABLE_FOOD.map(item => <Food
                     key={item.name}

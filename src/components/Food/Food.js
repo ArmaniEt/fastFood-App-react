@@ -5,7 +5,7 @@ import {Card, Button, CardTitle, CardText} from 'reactstrap';
 
 function Food(props) {
     return (
-        <Col xs={6}>
+        <Col className="mt-2" xs={6}>
             <Card className="m-2" body inverse color="info">
                 <CardTitle>{props.name}</CardTitle>
                 <CardText>Price: {props.price} KGS</CardText>
