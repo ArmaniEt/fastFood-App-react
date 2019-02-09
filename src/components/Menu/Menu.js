@@ -13,6 +13,7 @@ function Menu(props) {
                     price={item.price}
                     name={item.name}
                     onChangeFood={(event) => props.onChangeFood(item.name, event)}
+                    isEmpty = {() => props.isEmpty}
                 />)}
             </Row>
 

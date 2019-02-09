@@ -10,8 +10,8 @@ function CheckText(props) {
         <Row className='ml-1'>
             <p>{props.foodName}: </p>
             <p>{props.foodQuantity()}</p>
-            <Col>
-                <i onClick={(event) => props.onChangeFood(event)} className="fas fa-trash-alt"> </i>
+            <Col xs={4}>
+                <button className="btn btn-danger" disabled={props.isDisabled()} onClick={(event) => props.onChangeFood(event)}><i className="fas fa-trash-alt"> </i></button>
             </Col>
         </Row>
     )

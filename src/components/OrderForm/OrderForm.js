@@ -6,7 +6,6 @@ import {AVAILABLE_FOOD} from "../../App";
 
 function OrderForm(props) {
     return (
-        // use if else statement to show some layout
 
 
             <Col className='border border-dark m-2'>
@@ -15,6 +14,7 @@ function OrderForm(props) {
                                                             foodQuantity = {() => props.countQuantity(item.name)}
                                                             key={item.name}
                                                             onChangeFood={(event) => props.onChangeFood(item.name, event)}
+                                                            isDisabled = {() => props.isDisabled(item.name)}
 
                 />)}
                 <p>Total: {props.countTotal()}</p>

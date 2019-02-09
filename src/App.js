@@ -20,7 +20,7 @@ export {AVAILABLE_FOOD};
 
 // state in the app without constructor *
 // add, delete food (one common method) *
-// write checker method for check count in our state to show layout
+// write checker method for check count in our state to show layout *
 
 class App extends Component {
     render() {
@@ -34,11 +34,13 @@ class App extends Component {
                                 countTotal={this.getTotal}
                                 countQuantity={this.getQuantity}
                                 onChangeFood={this.foodChanger}
+                                isDisabled = {this.isDisabledButton}
                             />
                         </Col>
                         <Col xs={7}>
                             <Menu
                                 onChangeFood={this.foodChanger}
+
                             />
                         </Col>
                     </Row>
@@ -58,7 +60,7 @@ class App extends Component {
             cola: {count: 0, total: 0}
 
         },
-        isEmpty: false
+        isEmpty: true
     };
 
     foodChanger = (name, event) => {
@@ -76,7 +78,11 @@ class App extends Component {
         let foods = {...this.state.foods};
         foods[name] = food;
         let state = {...this.state};
+
+        let isEmpty = this.checkerFunc(foods); // pass current state to checker
+
         state.foods = foods;
+        state.isEmpty = isEmpty; // changed values in state
 
         this.setState(state);
     };
@@ -100,12 +106,24 @@ class App extends Component {
 
     };
 
-    checkerFunc = () => {
 
-    }
+    // method to check count in our state and return true or false
+    checkerFunc = (foods) => {
+        let keys = Object.keys(foods);
+        let counter = 0;
+        let totalCount = 0;
+        while (counter < keys.length) {
+            totalCount += foods[keys[counter]].count;
+            counter++;
+        }
+        return totalCount <= 0;
+    };
 
-
-
+    isDisabledButton = (name) => {
+      return this.state.foods[name].count === 0;
+    };
 }
+
+
 
 export default App;
