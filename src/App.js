@@ -5,12 +5,12 @@ import OrderForm from './components/OrderForm/OrderForm'
 import Menu from './components/Menu/Menu'
 
 const AVAILABLE_FOOD = [
-    {name: 'Hamburger', price: 80},
-    {name: 'Coffee', price: 20},
-    {name: 'Cheeseburger', price: 90},
-    {name: 'Tea', price: 15},
-    {name: 'Fries', price: 40},
-    {name: 'Cola', price: 35}
+    {name: 'hamburger', price: 80},
+    {name: 'coffee', price: 20},
+    {name: 'cheeseburger', price: 90},
+    {name: 'tea', price: 15},
+    {name: 'fries', price: 40},
+    {name: 'cola', price: 35}
 ];
 
 export {AVAILABLE_FOOD};
@@ -31,12 +31,15 @@ class App extends Component {
                         <Col xs={5}>
                             <OrderForm
                                 empty={this.state.isEmpty}
-                                total={this.getTotal}
-                                count={this.getQuantity}
+                                countTotal={this.getTotal}
+                                countQuantity={this.getQuantity}
+                                onChangeFood={this.foodChanger}
                             />
                         </Col>
                         <Col xs={7}>
-                            <Menu/>
+                            <Menu
+                                onChangeFood={this.foodChanger}
+                            />
                         </Col>
                     </Row>
 
@@ -55,7 +58,7 @@ class App extends Component {
             cola: {count: 0, total: 0}
 
         },
-        isEmpty: true
+        isEmpty: false
     };
 
     foodChanger = (name, event) => {
@@ -96,6 +99,10 @@ class App extends Component {
         return this.state.foods[name].count;
 
     };
+
+    checkerFunc = () => {
+
+    }
 
 
 

@@ -9,7 +9,7 @@ function Food(props) {
             <Card className="m-2" body inverse color="info">
                 <CardTitle>{props.name}</CardTitle>
                 <CardText>Price: {props.price} KGS</CardText>
-                <Button onClick={} color="success">Purchase Food</Button>
+                <Button value = 'add' onClick={(event)=> props.onChangeFood(event)} color="success">Purchase Food</Button>
             </Card>
         </Col>
 

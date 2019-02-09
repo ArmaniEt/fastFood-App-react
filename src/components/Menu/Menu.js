@@ -12,6 +12,7 @@ function Menu(props) {
                     key={item.name}
                     price={item.price}
                     name={item.name}
+                    onChangeFood={(event) => props.onChangeFood(item.name, event)}
                 />)}
             </Row>
 
