@@ -4,7 +4,6 @@ import CheckText from "../CheckText/CheckText";
 import {AVAILABLE_FOOD} from "../../App";
 
 
-
 function OrderForm(props) {
     return (
             <Col className='border border-dark m-2 rounded'>
@@ -17,7 +16,7 @@ function OrderForm(props) {
                                                             price = {item.price}
 
                 />)}
-                <p>Total: {props.countTotal()}</p>
+                <p className='mt-2'>Total: {props.countTotal()} KGS</p>
             </Col>
     )
 
