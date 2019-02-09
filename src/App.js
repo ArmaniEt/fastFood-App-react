@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import { Container, Row, Col } from 'reactstrap';
+import {Container, Row, Col} from 'reactstrap';
 import OrderForm from './components/OrderForm/OrderForm'
 import Menu from './components/Menu/Menu'
 
@@ -15,11 +15,12 @@ const AVAILABLE_FOOD = [
 
 export {AVAILABLE_FOOD};
 
-// split to components:
-// Menu, OrderForm, Food, CheckStrings
+// split to components: *
+// Menu, OrderForm, Food, CheckStrings *
 
-// state in the app without constructor
-// add, delete food (one common method)
+// state in the app without constructor *
+// add, delete food (one common method) *
+// write checker method for check count in our state to show layout
 
 class App extends Component {
     render() {
@@ -30,6 +31,8 @@ class App extends Component {
                         <Col xs={5}>
                             <OrderForm
                                 empty={this.state.isEmpty}
+                                total={this.getTotal}
+                                count={this.getQuantity}
                             />
                         </Col>
                         <Col xs={7}>
@@ -60,7 +63,8 @@ class App extends Component {
         let price = AVAILABLE_FOOD.find(item => item.name === name).price;
         if (event.target.value === 'add') {
             food.count += 1;
-        }else {
+
+        } else {
             food.count -= 1;
         }
 
@@ -72,7 +76,26 @@ class App extends Component {
         state.foods = foods;
 
         this.setState(state);
-    }
+    };
+
+    getTotal = () => {
+        let total = 0;
+        let keys = Object.keys(this.state.foods);
+        let counter = 0;
+
+
+        while (counter < keys.length) {
+            total += this.state.foods[keys[counter]].total;
+            counter++;
+        }
+        return total;
+
+    };
+
+    getQuantity = (name) => {
+        return this.state.foods[name].count;
+
+    };
 
 
 
