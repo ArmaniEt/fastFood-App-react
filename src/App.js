@@ -20,7 +20,6 @@ export {AVAILABLE_FOOD};
 
 // state in the app without constructor
 // add, delete food (one common method)
-//
 
 class App extends Component {
     render() {
@@ -29,7 +28,9 @@ class App extends Component {
                 <Container>
                     <Row>
                         <Col xs={5}>
-                            <OrderForm/>
+                            <OrderForm
+                                empty={this.state.isEmpty}
+                            />
                         </Col>
                         <Col xs={7}>
                             <Menu/>
@@ -42,7 +43,7 @@ class App extends Component {
     }
 
     state = {
-        check: {
+        foods: {
             hamburger: {count: 0, total: 0},
             coffee: {count: 0, total: 0},
             cheeseburger: {count: 0, total: 0},
@@ -50,8 +51,31 @@ class App extends Component {
             fries: {count: 0, total: 0},
             cola: {count: 0, total: 0}
 
+        },
+        isEmpty: true
+    };
+
+    foodChanger = (name, event) => {
+        let food = {...this.state.foods[name]};
+        let price = AVAILABLE_FOOD.find(item => item.name === name).price;
+        if (event.target.value === 'add') {
+            food.count += 1;
+        }else {
+            food.count -= 1;
         }
+
+        food.total = food.count * price;
+
+        let foods = {...this.state.foods};
+        foods[name] = food;
+        let state = {...this.state};
+        state.foods = foods;
+
+        this.setState(state);
     }
+
+
+
 }
 
 export default App;

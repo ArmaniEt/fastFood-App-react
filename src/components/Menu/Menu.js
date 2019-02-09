@@ -5,7 +5,7 @@ import Food from "../Food/Food"
 
 function Menu(props) {
     return (
-        <Col className="border border-dark">
+        <Col className="border border-dark m-2">
             <h5>Add items: </h5>
             <Row>
                 {AVAILABLE_FOOD.map(item => <Food
